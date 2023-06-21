@@ -12,8 +12,10 @@ namespace MVCBasico.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
+        public int Id { get; set; }
         public string titulo { set; get; }
         public string director { set; get; }
         public Genero genero { set; get; }
+        public Resena Resena { set; get; }
     }
 }

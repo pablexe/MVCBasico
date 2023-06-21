@@ -10,75 +10,75 @@ using MVCBasico.Models;
 
 namespace MVCBasico.Controllers
 {
-    public class UsuarioController : Controller
+    public class PeliculaController : Controller
     {
         private readonly PeliculasDataBaseContext _context;
 
-        public UsuarioController(PeliculasDataBaseContext context)
+        public PeliculaController(PeliculasDataBaseContext context)
         {
             _context = context;
         }
 
-        // GET: Usuario
+        // GET: Pelicula
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Usuarios.ToListAsync());
+            return View(await _context.Peliculas.ToListAsync());
         }
 
-        // GET: Usuario/Details/5
-        public async Task<IActionResult> Details(String? id)
+        // GET: Peliculas/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios
+            var pelicula = await _context.Peliculas
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (usuario == null)
+            if (pelicula == null)
             {
                 return NotFound();
             }
 
-            return View(usuario);
+            return View(pelicula);
         }
 
-        // GET: Usuario/Create
+        // GET: Pelicula/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Usuario/Create
+        // POST: Pelicula/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,nombre,apellido,correo,contrasenia")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("Id,titulo,director,genero,duracion")] Pelicula pelicula)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(usuario);
+                _context.Add(pelicula);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(usuario);
+            return View(pelicula);
         }
 
-        // GET: Usuario/Edit/5
-        public async Task<IActionResult> Edit(String? id)
+        // GET: Pelicula/Edit/5
+        public async Task<IActionResult> Edit(int? Id)
         {
-            if (id == null)
+            if (Id == null)
             {
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario == null)
+            var pelicula = await _context.Usuarios.FindAsync(Id);
+            if (pelicula == null)
             {
                 return NotFound();
             }
-            return View(usuario);
+            return View(pelicula);
         }
 
         // POST: Usuario/Edit/5
@@ -86,9 +86,9 @@ namespace MVCBasico.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(String id, [Bind("Id,nombre,apellido,correo,contrasenia")] Usuario usuario)
+        public async Task<IActionResult> Edit(int Id, [Bind("Id,titulo,director,genero,duracion")] Pelicula pelicula)
         {
-            if (id != usuario.Id)
+            if (Id != pelicula.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace MVCBasico.Controllers
             {
                 try
                 {
-                    _context.Update(usuario);
+                    _context.Update(pelicula);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsuarioExists(usuario.Id))
+                    if (!UsuarioExists(pelicula.Id))
                     {
                         return NotFound();
                     }
@@ -113,41 +113,41 @@ namespace MVCBasico.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(usuario);
+            return View(pelicula);
         }
 
-        // GET: Usuario/Delete/5
-        public async Task<IActionResult> Delete(String? id)
+        // GET: Pelicula/Delete/5
+        public async Task<IActionResult> Delete(int? Id)
         {
-            if (id == null)
+            if (Id == null)
             {
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (usuario == null)
+            var pelicula = await _context.Peliculas
+                .FirstOrDefaultAsync(m => m.Id == Id);
+            if (pelicula == null)
             {
                 return NotFound();
             }
 
-            return View(usuario);
+            return View(pelicula);
         }
 
-        // POST: Usuario/Delete/5
+        // POST: Pelicula/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(String id)
+        public async Task<IActionResult> DeleteConfirmed(int Id)
         {
-            var usuario = await _context.Usuarios.FindAsync(id);
-            _context.Usuarios.Remove(usuario);
+            var pelicula = await _context.Peliculas.FindAsync(Id);
+            _context.Peliculas.Remove(pelicula);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UsuarioExists(String id)
+        private bool UsuarioExists(int Id)
         {
-            return _context.Usuarios.Any(e => e.Id == id);
+            return _context.Peliculas.Any(e => e.Id == Id);
         }
     }
 }
