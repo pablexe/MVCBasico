@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVCBasico.Models.Estudiante>
+﻿@model IEnumerable<MVCBasico.Models.Usuario>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,16 +13,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Edad)
+                @Html.DisplayNameFor(model => model.nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaInscripto)
+                @Html.DisplayNameFor(model => model.apellido)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeporteFavorito)
+                @Html.DisplayNameFor(model => model.correo)
             </th>
             <th></th>
         </tr>
@@ -31,16 +31,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
+                @Html.DisplayFor(modelItem => item.nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Edad)
+                @Html.DisplayFor(modelItem => item.apellido)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FechaInscripto)
+                @Html.DisplayFor(modelItem => item.correo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DeporteFavorito)
+                @Html.DisplayFor(modelItem => item.correo)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
