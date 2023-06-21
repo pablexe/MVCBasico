@@ -13,6 +13,9 @@ namespace MVCBasico.Context
         {
         }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Pelicula> Peliculas { get; set;}
+        public DbSet<Serie> Series { get; set; }
+
     }
 
 }

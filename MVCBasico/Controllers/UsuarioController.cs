@@ -10,11 +10,11 @@ using MVCBasico.Models;
 
 namespace MVCBasico.Controllers
 {
-    public class EstudianteController : Controller
+    public class UsuarioController : Controller
     {
-        private readonly EscuelaDatabaseContext _context;
+        private readonly PeliculasDataBaseContext _context;
 
-        public EstudianteController(EscuelaDatabaseContext context)
+        public UsuarioController(PeliculasDataBaseContext context)
         {
             _context = context;
         }
@@ -22,25 +22,25 @@ namespace MVCBasico.Controllers
         // GET: Estudiante
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Estudiantes.ToListAsync());
+            return View(await _context.Usuarios.ToListAsync());
         }
 
         // GET: Estudiante/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(String? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var estudiante = await _context.Estudiantes
+            var usuario = await _context.Usuarios
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (estudiante == null)
+            if (usuario == null)
             {
                 return NotFound();
             }
 
-            return View(estudiante);
+            return View(usuario);
         }
 
         // GET: Estudiante/Create
@@ -73,7 +73,7 @@ namespace MVCBasico.Controllers
                 return NotFound();
             }
 
-            var estudiante = await _context.Estudiantes.FindAsync(id);
+            var estudiante = await _context.Usuarios.FindAsync(id);
             if (estudiante == null)
             {
                 return NotFound();
@@ -86,9 +86,9 @@ namespace MVCBasico.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Edad,FechaInscripto,DeporteFavorito")] Estudiante estudiante)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Edad,FechaInscripto,DeporteFavorito")] Usuario usuario)
         {
-            if (id != estudiante.Id)
+            if (id != usuario.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace MVCBasico.Controllers
             {
                 try
                 {
-                    _context.Update(estudiante);
+                    _context.Update(Usuario);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EstudianteExists(estudiante.Id))
+                    if (!UsuarioExists(Usuario.Id))
                     {
                         return NotFound();
                     }
@@ -113,25 +113,25 @@ namespace MVCBasico.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(estudiante);
+            return View(usuario);
         }
 
         // GET: Estudiante/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(String? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var estudiante = await _context.Estudiantes
+            var usuario = await _context.Usuarios
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (estudiante == null)
+            if (usuario == null)
             {
                 return NotFound();
             }
 
-            return View(estudiante);
+            return View(usuario);
         }
 
         // POST: Estudiante/Delete/5
@@ -139,15 +139,15 @@ namespace MVCBasico.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var estudiante = await _context.Estudiantes.FindAsync(id);
-            _context.Estudiantes.Remove(estudiante);
+            var usuario = await _context.Usuarios.FindAsync(id);
+            _context.Usuarios.Remove(usuario);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EstudianteExists(int id)
+        private bool UsuarioExists(int id)
         {
-            return _context.Estudiantes.Any(e => e.Id == id);
+            return _context.Usuarios.Any(e => e.Id == id);
         }
     }
 }
