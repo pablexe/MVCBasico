@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCBasico.Migrations
 {
     [DbContext(typeof(PeliculasDataBaseContext))]
-    [Migration("20230622001918_MVCBasico.Context.PeliculasDataBaseContext.cs")]
+    [Migration("20230622004917_MVCBasico.Context.PeliculasDataBaseContext.cs")]
     partial class MVCBasicoContextPeliculasDataBaseContextcs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

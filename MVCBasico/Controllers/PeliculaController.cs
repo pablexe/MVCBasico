@@ -73,7 +73,7 @@ namespace MVCBasico.Controllers
                 return NotFound();
             }
 
-            var pelicula = await _context.Usuarios.FindAsync(Id);
+            var pelicula = await _context.Peliculas.FindAsync(Id);
             if (pelicula == null)
             {
                 return NotFound();
