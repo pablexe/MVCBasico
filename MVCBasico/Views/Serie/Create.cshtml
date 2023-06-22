@@ -1,18 +1,17 @@
-﻿@model MVCBasico.Models.Pelicula
+﻿@model MVCBasico.Models.Serie
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
 
-<h1>Edit</h1>
+<h1>Create</h1>
 
-<h4>Peliculas</h4>
+<h4>Pelicula</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="titulo" class="control-label"></label>
                 <input asp-for="titulo" class="form-control" />
@@ -22,21 +21,28 @@
                 <label asp-for="director" class="control-label"></label>
                 <input asp-for="director" class="form-control" />
                 <span asp-validation-for="director" class="text-danger"></span>
-                <span asp-validation-for="director" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="genero" class="control-label"></label>
-                <input asp-for="genero" class="form-control" />
+                <select asp-for="genero" class="form-control" asp-items="Html.GetEnumSelectList<Genero>()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+
                 <span asp-validation-for="genero" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="duracion" class="control-label"></label>
-                <input asp-for="duracion" class="form-control" />
-                <span asp-validation-for="duracion" class="text-danger"></span>
-                <span asp-validation-for="duracion" class="text-danger"></span>
+                <label asp-for="cantCapitulos" class="control-label"></label>
+                <input asp-for="cantCapitulos" class="form-control" />
+                <span asp-validation-for="cantCapitulos" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="cantTemporadas" class="control-label"></label>
+                <input asp-for="cantTemporadas" class="form-control" />
+                <span asp-validation-for="cantTemporadas" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
