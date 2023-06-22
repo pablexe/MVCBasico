@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVCBasico.Models.Usuario>
+﻿@model IEnumerable<MVCBasico.Models.Pelicula>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,13 +16,16 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.nombre)
+                @Html.DisplayNameFor(model => model.titulo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.apellido)
+                @Html.DisplayNameFor(model => model.director)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.correo)
+                @Html.DisplayNameFor(model => model.genero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.duracion)
             </th>
             <th></th>
         </tr>
@@ -31,16 +34,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.nombre)
+                @Html.DisplayFor(modelItem => item.titulo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.apellido)
+                @Html.DisplayFor(modelItem => item.director)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.correo)
+                @Html.DisplayFor(modelItem => item.genero)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.correo)
+                @Html.DisplayFor(modelItem => item.duracion)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

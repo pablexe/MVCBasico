@@ -16,6 +16,6 @@ namespace MVCBasico.Models
         public string titulo { set; get; }
         public string director { set; get; }
         public Genero genero { set; get; }
-        public Resena Resena { set; get; }
+        public Resena Resena { set; get; } // ESto debe ser Array List
     }
 }

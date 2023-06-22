@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCBasico.Migrations
 {
     [DbContext(typeof(PeliculasDataBaseContext))]
-    [Migration("20230621232228_MVCBasico.Context.PeliculasDataBaseContext.cs")]
+    [Migration("20230622001918_MVCBasico.Context.PeliculasDataBaseContext.cs")]
     partial class MVCBasicoContextPeliculasDataBaseContextcs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace MVCBasico.Migrations
 
             modelBuilder.Entity("MVCBasico.Models.Pelicula", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -43,7 +43,7 @@ namespace MVCBasico.Migrations
                     b.Property<string>("titulo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("Resenacalificacion");
 
@@ -70,7 +70,7 @@ namespace MVCBasico.Migrations
 
             modelBuilder.Entity("MVCBasico.Models.Serie", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -93,7 +93,7 @@ namespace MVCBasico.Migrations
                     b.Property<string>("titulo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("Resenacalificacion");
 

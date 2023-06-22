@@ -39,7 +39,7 @@ namespace MVCBasico.Migrations
                 name: "Peliculas",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     titulo = table.Column<string>(nullable: true),
                     director = table.Column<string>(nullable: true),
@@ -49,7 +49,7 @@ namespace MVCBasico.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Peliculas", x => x.id);
+                    table.PrimaryKey("PK_Peliculas", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Peliculas_Resena_Resenacalificacion",
                         column: x => x.Resenacalificacion,
@@ -62,7 +62,7 @@ namespace MVCBasico.Migrations
                 name: "Series",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     titulo = table.Column<string>(nullable: true),
                     director = table.Column<string>(nullable: true),
@@ -73,7 +73,7 @@ namespace MVCBasico.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Series", x => x.id);
+                    table.PrimaryKey("PK_Series", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Series_Resena_Resenacalificacion",
                         column: x => x.Resenacalificacion,

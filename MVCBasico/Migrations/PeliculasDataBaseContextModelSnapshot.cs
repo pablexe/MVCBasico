@@ -21,7 +21,7 @@ namespace MVCBasico.Migrations
 
             modelBuilder.Entity("MVCBasico.Models.Pelicula", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -41,7 +41,7 @@ namespace MVCBasico.Migrations
                     b.Property<string>("titulo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("Resenacalificacion");
 
@@ -68,7 +68,7 @@ namespace MVCBasico.Migrations
 
             modelBuilder.Entity("MVCBasico.Models.Serie", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -91,7 +91,7 @@ namespace MVCBasico.Migrations
                     b.Property<string>("titulo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("Resenacalificacion");
 
