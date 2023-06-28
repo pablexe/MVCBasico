@@ -10,7 +10,7 @@ namespace MVCBasico.Models
   
     public class Pelicula : Contenido
     {
-        [Display(Name = "Duración"),Range(0,250, ErrorMessage ="Por favor ingrese un número entre 0 y 250")]
+        [Required,Display(Name = "Duración"),Range(0,250, ErrorMessage ="Por favor ingrese un número entre 0 y 250")]
         public double duracion { set; get; }
     }
 }

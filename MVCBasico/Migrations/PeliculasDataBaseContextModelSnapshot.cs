@@ -26,10 +26,8 @@ namespace MVCBasico.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("Resenacalificacion")
-                        .HasColumnType("int");
-
                     b.Property<string>("director")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("duracion")
@@ -39,11 +37,10 @@ namespace MVCBasico.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("titulo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Resenacalificacion");
 
                     b.ToTable("Peliculas");
                 });
@@ -55,13 +52,24 @@ namespace MVCBasico.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("PeliculaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SerieId")
+                        .HasColumnType("int");
+
                     b.Property<string>("comentario")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("usuario")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("calificacion");
+
+                    b.HasIndex("PeliculaId");
+
+                    b.HasIndex("SerieId");
 
                     b.ToTable("Resena");
                 });
@@ -73,9 +81,6 @@ namespace MVCBasico.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("Resenacalificacion")
-                        .HasColumnType("int");
-
                     b.Property<int>("cantCapitulos")
                         .HasColumnType("int");
 
@@ -83,17 +88,17 @@ namespace MVCBasico.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("director")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("genero")
                         .HasColumnType("int");
 
                     b.Property<string>("titulo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Resenacalificacion");
 
                     b.ToTable("Series");
                 });
@@ -105,15 +110,20 @@ namespace MVCBasico.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("apellido")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("contrasenia")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<string>("correo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("nombre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -121,18 +131,15 @@ namespace MVCBasico.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("MVCBasico.Models.Pelicula", b =>
+            modelBuilder.Entity("MVCBasico.Models.Resena", b =>
                 {
-                    b.HasOne("MVCBasico.Models.Resena", "Resena")
-                        .WithMany()
-                        .HasForeignKey("Resenacalificacion");
-                });
+                    b.HasOne("MVCBasico.Models.Pelicula", null)
+                        .WithMany("resenas")
+                        .HasForeignKey("PeliculaId");
 
-            modelBuilder.Entity("MVCBasico.Models.Serie", b =>
-                {
-                    b.HasOne("MVCBasico.Models.Resena", "Resena")
-                        .WithMany()
-                        .HasForeignKey("Resenacalificacion");
+                    b.HasOne("MVCBasico.Models.Serie", null)
+                        .WithMany("resenas")
+                        .HasForeignKey("SerieId");
                 });
 #pragma warning restore 612, 618
         }

@@ -13,11 +13,11 @@ namespace MVCBasico.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
         public int Id { get; set; }
-        [Display(Name = "Título")]
+        [Required,Display(Name = "Título")]
         public string titulo { set; get; }
-        [Display(Name = "Director")]
+        [Required,Display(Name = "Director")]
         public string director { set; get; }
-        [Display(Name = "Género")]
+        [Required, Display(Name = "Género")]
         public Genero genero { set; get; }
         [Display(Name = "Reseñas")]
         public List<Resena> resenas {set; get;} 

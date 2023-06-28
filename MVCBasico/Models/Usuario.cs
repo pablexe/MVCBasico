@@ -12,13 +12,13 @@ namespace MVCBasico.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
-        [Display(Name = "Nombre"),DataType(DataType.Text)]
+        [Required,Display(Name = "Nombre"),DataType(DataType.Text)]
         public string nombre { get; set; }
-        [Display(Name = "Nombre"), DataType(DataType.Text)]
+        [Required,Display(Name = "Apellido"), DataType(DataType.Text)]
         public string apellido { get; set; }
-        [Display(Name = "Correo Electrónico"), RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "El correo es inválido")]
+        [Required,Display(Name = "Correo Electrónico"), RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "El correo es inválido")]
         public string correo { get; set; }
-        [Display(Name = "Contraseña"),StringLength(10,ErrorMessage ="No puede tener mas de 10 caracteres")] 
+        [Required,Display(Name = "Contraseña"),StringLength(10,ErrorMessage ="No puede tener mas de 10 caracteres")] 
         public string contrasenia { get; set; }
     }
 
