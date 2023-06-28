@@ -8,14 +8,19 @@ using System.Threading.Tasks;
 namespace MVCBasico.Models
 {
     public class Contenido
-    { 
+    {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
         public int Id { get; set; }
+        [Display(Name = "Título")]
         public string titulo { set; get; }
+        [Display(Name = "Director")]
         public string director { set; get; }
+        [Display(Name = "Género")]
         public Genero genero { set; get; }
-        public Resena Resena { set; get; } // ESto debe ser Array List
+        [Display(Name = "Reseñas")]
+        public List<Resena> resenas {set; get;} 
     }
+ 
 }
