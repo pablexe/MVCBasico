@@ -18,7 +18,7 @@ namespace MVCBasico.Models
         public string apellido { get; set; }
         [Required,Display(Name = "Correo Electrónico"), RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "El correo es inválido")]
         public string correo { get; set; }
-        [Required,Display(Name = "Contraseña"),StringLength(10,ErrorMessage ="No puede tener mas de 10 caracteres")] 
+        [Required,Display(Name = "Contraseña"),StringLength(10,ErrorMessage ="No puede tener mas de 10 caracteres"),DataType(DataType.Password)] 
         public string contrasenia { get; set; }
     }
 
