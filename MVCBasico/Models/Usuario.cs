@@ -11,7 +11,7 @@ namespace MVCBasico.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Id { get; set; }
+        public int Id { get; set; }
         [Required,Display(Name = "Nombre"),DataType(DataType.Text)]
         public string nombre { get; set; }
         [Required,Display(Name = "Apellido"), DataType(DataType.Text)]

@@ -1,4 +1,4 @@
-﻿@model MVCBasico.Models.Pelicula
+﻿@model MVCBasico.Models.Contenido
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,7 +6,7 @@
 
 <h1>Editar</h1>
 
-<h4>Película</h4>
+<h4>@Model.titulo</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -22,19 +22,13 @@
                 <label asp-for="director" class="control-label"></label>
                 <input asp-for="director" class="form-control" />
                 <span asp-validation-for="director" class="text-danger"></span>
-                <span asp-validation-for="director" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="genero" class="control-label"></label>
                 <input asp-for="genero" class="form-control" />
                 <span asp-validation-for="genero" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="duracion" class="control-label"></label>
-                <input asp-for="duracion" class="form-control" />
-                <span asp-validation-for="duracion" class="text-danger"></span>
-                <span asp-validation-for="duracion" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -47,5 +41,8 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+

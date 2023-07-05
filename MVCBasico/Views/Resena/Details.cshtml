@@ -1,0 +1,42 @@
+﻿@model MVCBasico.Models.Resena
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalle</h1>
+
+<div>
+    <h4>Detalles</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.contenido)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.contenido.titulo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.comentario)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.comentario)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.usuario)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.usuario.nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.contenido)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.contenido.genero)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
+

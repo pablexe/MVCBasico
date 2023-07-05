@@ -26,13 +26,8 @@ namespace MVCBasico.Controllers
         }
 
         // GET: Usuario/Details/5
-        public async Task<IActionResult> Details(String? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var usuario = await _context.Usuarios
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (usuario == null)
@@ -50,11 +45,9 @@ namespace MVCBasico.Controllers
         }
 
         // POST: Usuario/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,nombre,apellido,correo,contrasenia")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("nombre,apellido,correo,contrasenia")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -66,13 +59,8 @@ namespace MVCBasico.Controllers
         }
 
         // GET: Usuario/Edit/5
-        public async Task<IActionResult> Edit(String? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var usuario = await _context.Usuarios.FindAsync(id);
             if (usuario == null)
             {
@@ -82,11 +70,9 @@ namespace MVCBasico.Controllers
         }
 
         // POST: Usuario/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(String id, [Bind("Id,nombre,apellido,correo,contrasenia")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,nombre,apellido,correo,contrasenia")] Usuario usuario)
         {
             if (id != usuario.Id)
             {
@@ -117,13 +103,8 @@ namespace MVCBasico.Controllers
         }
 
         // GET: Usuario/Delete/5
-        public async Task<IActionResult> Delete(String? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var usuario = await _context.Usuarios
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (usuario == null)
@@ -137,7 +118,7 @@ namespace MVCBasico.Controllers
         // POST: Usuario/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(String id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var usuario = await _context.Usuarios.FindAsync(id);
             _context.Usuarios.Remove(usuario);
@@ -145,9 +126,10 @@ namespace MVCBasico.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UsuarioExists(String id)
+        private bool UsuarioExists(int id)
         {
             return _context.Usuarios.Any(e => e.Id == id);
         }
     }
+
 }

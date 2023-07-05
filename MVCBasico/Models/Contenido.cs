@@ -20,7 +20,7 @@ namespace MVCBasico.Models
         [Required, Display(Name = "Género")]
         public Genero genero { set; get; }
         [Display(Name = "Reseñas")]
-        public List<Resena> resenas {set; get;} 
+        public virtual  List<Resena> resenas {set; get;} 
     }
  
 }
