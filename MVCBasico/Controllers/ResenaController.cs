@@ -73,6 +73,11 @@ namespace MVCBasico.Controllers
             if (ModelState.IsValid)
                 
             {
+                if(await Existsresenauser(resena.usuarioId, resena.contenidoId))
+                { 
+                    ModelState.AddModelError(string.Empty, "Ya has creado una reseña para este contenido.");
+                    return View(resena);
+                }
             _context.Add(resena);
             await _context.SaveChangesAsync();       
             return RedirectToAction(nameof(Index));
@@ -166,5 +171,12 @@ namespace MVCBasico.Controllers
         {
             return _context.Resenas.Any(e => e.Id == Id);
         }
+        // GET: ResenaUser/Exists
+        [HttpGet]
+        public async Task<bool> Existsresenauser(int usuarioId, int contenidoId)
+        {
+            return await _context.Resenas.AnyAsync(r => r.usuarioId == usuarioId && r.contenidoId == contenidoId);
+        }
+
     }
 }
