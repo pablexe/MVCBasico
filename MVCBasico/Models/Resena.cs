@@ -10,19 +10,21 @@ namespace MVCBasico.Models
 
         public int Id { get; set; }
 
-        [Display(Name = "Calificación"),Range(1,10, ErrorMessage ="Debe ser entre 1 y 10")]
+        [Required(ErrorMessage = "Debe ingresar una calificación"),Display(Name = "Calificación"),Range(1,10, ErrorMessage ="Debe ser entre 1 y 10")]
         public int calificacion { get; set; }
-        [Display(Name = "Comentario")]
+        [Required(ErrorMessage = "Debe ingresar un comentario"),Display(Name = "Comentario")]
         public string comentario { get; set; }
 
-        [Display(Name = "Usuario")]
+
+        [Required(ErrorMessage = "Debe ingresar un usuario"),Display(Name = "Usuario")]
         public int usuarioId { get; set; }
-  
+
+        [Display(Name = "Usuario")]
         public virtual Usuario usuario { get; set;}
 
-        [Display(Name = "Titulo")]
+        [Required(ErrorMessage = "Debe seleccionar el contenido"),Display(Name = "Contenido")]
         public int contenidoId { get; set; }
-
+        [Display(Name = "Contenido")]
         public virtual Contenido contenido { get; set; }
 
     }

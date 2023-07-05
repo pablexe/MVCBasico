@@ -11,9 +11,9 @@ namespace MVCBasico.Models
    
     public class Serie : Contenido
     {
-        [Required,Display(Name = "Cantidad de Capítulos"),Range(1,1000,ErrorMessage ="Deber ser entre 1 y 1000")]
+        [Required(ErrorMessage = "Debe ingresar el la cantidad de capitúlos"), Display(Name = "Cantidad de Capítulos"),Range(1,1000,ErrorMessage ="Deber ser entre 1 y 500")]
         public int cantCapitulos { set; get; }
-        [Required,Display(Name = "Cantidad de Temporadas"),Range(1, 100, ErrorMessage = "Deber ser entre 1 y 100")]
+        [Required(ErrorMessage = "Debe ingresar el la cantidad de temporadas"), Display(Name = "Cantidad de Temporadas"),Range(1, 100, ErrorMessage = "Deber ser entre 1 y 100")]
         public int cantTemporadas { set; get; }
     }
 }

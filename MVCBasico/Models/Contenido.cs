@@ -13,11 +13,11 @@ namespace MVCBasico.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
         public int Id { get; set; }
-        [Required,Display(Name = "Título")]
+        [Required(ErrorMessage = "Debe ingresar el título"),Display(Name = "Título")]
         public string titulo { set; get; }
-        [Required,Display(Name = "Director")]
+        [Required(ErrorMessage = "Debe ingresar el director"), Display(Name = "Director")]
         public string director { set; get; }
-        [Required, Display(Name = "Género")]
+        [Required(ErrorMessage = "Debe ingresar el género"), Display(Name = "Género")]
         public Genero genero { set; get; }
         [Display(Name = "Reseñas")]
         public virtual  List<Resena> resenas {set; get;} 
