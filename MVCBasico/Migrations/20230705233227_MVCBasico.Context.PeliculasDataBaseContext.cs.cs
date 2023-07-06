@@ -2,7 +2,7 @@
 
 namespace MVCBasico.Migrations
 {
-    public partial class PeliculasDataBaseContextcs : Migration
+    public partial class MVCBasicoContextPeliculasDataBaseContextcs : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,7 +48,7 @@ namespace MVCBasico.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     calificacion = table.Column<int>(nullable: false),
-                    comentario = table.Column<string>(nullable: true),
+                    comentario = table.Column<string>(nullable: false),
                     usuarioId = table.Column<int>(nullable: false),
                     contenidoId = table.Column<int>(nullable: false)
                 },

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCBasico.Migrations
 {
     [DbContext(typeof(PeliculasDataBaseContext))]
-    [Migration("20230705010711_PeliculasDataBaseContext.cs")]
-    partial class PeliculasDataBaseContextcs
+    [Migration("20230705233227_MVCBasico.Context.PeliculasDataBaseContext.cs")]
+    partial class MVCBasicoContextPeliculasDataBaseContextcs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,6 +60,7 @@ namespace MVCBasico.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("comentario")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("contenidoId")

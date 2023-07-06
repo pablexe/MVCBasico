@@ -58,6 +58,7 @@ namespace MVCBasico.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("comentario")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("contenidoId")
